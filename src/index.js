@@ -66,7 +66,8 @@ class App extends React.Component {
 
     static getApiUrl()
     {
-        return "http://192.168.1.30:9696"; 
+        return "http://127.0.0.1:4000"; 
+        //return "";
     }
 
     static Api_GetRooms()

@@ -11,7 +11,14 @@ import 'whatwg-fetch'
 class BaseComponent extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { ui: { toolbar: { name: "", showBackButton: false } } };
+    this.state = { 
+      ui: { 
+        toolbar: { 
+          name: "",
+          showBackButton: false 
+        }        
+      } 
+    };
   }
 
   componentDidMount() {
