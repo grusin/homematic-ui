@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../App.css';
-import * as ons from 'onsenui'
 import * as Ons from 'react-onsenui';
 import 'onsenui/css/onsenui.css';
 import 'onsenui/css/onsen-css-components.css';

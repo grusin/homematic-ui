@@ -1,9 +1,7 @@
-import React, { Component } from 'react';
-import * as ons from 'onsenui'
+import React from 'react';
 import * as Ons from 'react-onsenui';
 import 'onsenui/css/onsenui.css';
 import 'onsenui/css/onsen-css-components.css';
-import App from './index.js'
 import 'onsenui/css/onsenui.css';
 import 'onsenui/css/onsen-css-components.css';
 import 'whatwg-fetch'
@@ -53,7 +51,7 @@ class BaseComponent extends React.Component {
 
   renderToolbar() {
     return (<Ons.Toolbar>
-      {this.state.ui.toolbar.showBackButton == true &&
+      {this.state.ui.toolbar.showBackButton === true &&
         <div className='left'>
           <Ons.BackButton>Back</Ons.BackButton>
         </div>

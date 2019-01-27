@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import * as ons from 'onsenui'
+import React from 'react';
 import * as Ons from 'react-onsenui';
 import 'onsenui/css/onsenui.css';
 import 'onsenui/css/onsen-css-components.css';
@@ -61,15 +60,15 @@ class Heating extends BaseComponent {
               <Ons.Button modifier="large--cta" disabled style={{ width: "70px" }}>{row.HumidityAvg}%&nbsp;<Ons.Icon icon="fa-tint" /></Ons.Button>
             }
 
-            {row.HeatingActive == true && row.ValveOpenMax > 0 &&
+            {row.HeatingActive === true && row.ValveOpenMax > 0 &&
               <Ons.Button modifier="large--cta" disabled style={{ width: "30px" }}><Ons.Icon icon="fa-fire" /> </Ons.Button>
             }
 
-            {row.BoostActive == true &&
+            {row.BoostActive === true &&
               <Ons.Button modifier="large--cta" disabled style={{ width: "30px" }}><Ons.Icon icon="fa-rocket" /> </Ons.Button>
             }
 
-            {row.DehumidifierActive == true &&
+            {row.DehumidifierActive === true &&
 
               <Ons.Button modifier="large--cta" disabled style={{ width: "30px" }}><Ons.Icon icon="fa-cloud" /> </Ons.Button>
             }

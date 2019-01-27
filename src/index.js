@@ -10,7 +10,6 @@ import {
 } from 'react-onsenui';
 
 import Heating from './heating/heating';
-import ChangeTemp from './heating/changetemp';
 import Lights from './lights/lights';
 
 import 'onsenui/css/onsenui.css';
@@ -53,7 +52,7 @@ class App extends React.Component {
     }
 
     renderPage(route, navigator) {
-        route.props = route.props;
+       // route.props = route.props;
         route.props.navigator = navigator;
 
         return React.createElement(route.comp, route.props);
@@ -93,6 +92,21 @@ class App extends React.Component {
     {
         return fetch(App.getApiUrl() + "/api/rooms/" + room_iseid + "/boostmode/" + new_state).then(response => response.json())
     }    
+
+    static Api_GetAlarm()
+    {
+        return fetch(App.getApiUrl() + "/api/alarm").then(response => response.json())
+    }
+
+    static Api_SetAlarmArmed()
+    {
+        return fetch(App.getApiUrl() + "/api/alarm/arm").then(response => response.json())
+    }
+
+    static Api_SetAlarmDisarmed(code)
+    {
+        return fetch(App.getApiUrl() + "/api/alarm/disarm/" + code).then(response => response.json())
+    }
 }
 export default App;
 
