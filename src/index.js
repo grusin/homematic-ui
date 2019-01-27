@@ -96,5 +96,7 @@ class App extends React.Component {
 }
 export default App;
 
-
+//this gets executed on startup
+ons.disableAutoStyling()
+ons.platform.select('ios')
 ReactDOM.render(<App />, document.getElementById('root'));

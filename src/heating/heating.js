@@ -32,14 +32,14 @@ class Heating extends BaseComponent {
   renderPage() {
     return (
       <div>
-      <Ons.List
-        renderHeader={() => { this.renderHeader }}
+      <Ons.List       
         dataSource={this.state.rooms}
         renderRow={this.renderRow.bind(this)}       
       />     
       </div>
     );
   }  
+
 
   renderRow(row) {
     return (
