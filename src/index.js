@@ -24,6 +24,10 @@ class Tabs extends React.Component {
                 tab: <Tab key="heating" label="heating" icon="ion-ios-home-outline" />
             },
             {
+                content: <Heating key="alarm" navigator={this.props.navigator} />,
+                tab: <Tab key="alarm" label="alarm" icon="ion-ios-home-outline" />
+            },
+            {
                 content: <Lights key="lights" navigator={this.props.navigator} />,
                 tab: <Tab key="lights" label="lights" icon="ion-ios-albums-outline" />
             }
