@@ -69,8 +69,11 @@ class Heating extends BaseComponent {
             }
 
             {row.DehumidifierActive === true &&
-
               <Ons.Button modifier="large--cta" disabled style={{ width: "30px" }}><Ons.Icon icon="fa-cloud" /> </Ons.Button>
+            }
+
+            {row.WindowOpen === true &&
+               <Ons.Button modifier="large--cta" disabled style={{ width: "30px" }}><Ons.Icon icon="fa-door-open" /> </Ons.Button>
             }
 
             {row.Warnings.length > 0 &&

@@ -17,9 +17,9 @@ class ChangeTemp extends BaseComponent {
     this.state.DesiredTempIdx = null;
   }
 
- 
+
   idx2Temp(idx) {
-     //assume that min temp is 5, max temp is 30, round to 0.5 deg
+    //assume that min temp is 5, max temp is 30, round to 0.5 deg
     return Math.round((5 + idx / 4.0) * 2.0) / 2.0;
   }
 
@@ -30,12 +30,11 @@ class ChangeTemp extends BaseComponent {
   componentNeedsData(done) {
     App.Api_GetRoom(this.props.ISEID).then(data => {
       this.setState({ room: data });
-     
+
       //initial data load, set seme extra magic
-      if(this.state.DesiredTemp == null)
-      {
+      if (this.state.DesiredTemp == null) {
         this.setState({
-          DesiredTemp: this.state.room.SetTemp, 
+          DesiredTemp: this.state.room.SetTemp,
           DesiredTempIdx: this.temp2idx(this.state.room.SetTemp)
         });
 
@@ -50,13 +49,13 @@ class ChangeTemp extends BaseComponent {
 
   handleBoostSwitch(event) {
     //console.log(event);
-    
+
     //disable UI
     this.setState(state => { state.ui.disabled = true; return state });
 
     App.Api_SetRoomBoost(this.props.ISEID, event.value).then(data => {
       this.setState({ room: data });
-      this.setState(state => { state.ui.disabled = false; return state });      
+      this.setState(state => { state.ui.disabled = false; return state });
     });
   }
 
@@ -69,14 +68,14 @@ class ChangeTemp extends BaseComponent {
     //set new state
     App.Api_SetRoomTemp(this.props.ISEID, this.state.DesiredTemp).then(data => {
       this.setState({ room: data });
-      this.setState(state => { state.ui.disabled = false; return state });      
+      this.setState(state => { state.ui.disabled = false; return state });
     });
   }
 
   renderPage() {
     return (
       <Ons.List>
-        <Ons.ProgressBar indeterminate={this.state.ui.disabled}/> 
+        <Ons.ProgressBar indeterminate={this.state.ui.disabled} />
         <Ons.ListHeader>{this.state.room.Name}</Ons.ListHeader>
         <Ons.ListItem>
           <div className='left'>Set Temp:</div>
@@ -89,7 +88,7 @@ class ChangeTemp extends BaseComponent {
         <Ons.ListHeader>Heat boost</Ons.ListHeader>
         <Ons.ListItem>
           <div className='left'>Boost <Ons.Icon icon="fa-rocket" /> <Ons.Icon icon="fa-rocket" /> <Ons.Icon icon="fa-rocket" />:</div>
-          <div className='right'><Ons.Switch checked={this.state.room.BoostActive} onChange={this.handleBoostSwitch.bind(this)} disabled={this.state.ui.disabled}/></div>
+          <div className='right'><Ons.Switch checked={this.state.room.BoostActive} onChange={this.handleBoostSwitch.bind(this)} disabled={this.state.ui.disabled} /></div>
         </Ons.ListItem>
         <Ons.ListHeader>Your desired Temp</Ons.ListHeader>
         <Ons.ListItem>

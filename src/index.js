@@ -10,6 +10,7 @@ import {
 } from 'react-onsenui';
 
 import Heating from './heating/heating';
+import Alarm from './alarm/alarm';
 import Lights from './lights/lights';
 
 import 'onsenui/css/onsenui.css';
@@ -19,16 +20,17 @@ class Tabs extends React.Component {
     renderTabs() {
         return [
             {
-                content: <Heating key="heating" navigator={this.props.navigator} />,
-                tab: <Tab key="heating" label="heating" icon="ion-ios-home-outline" />
+                content: <Alarm key="alarm" navigator={this.props.navigator} />,
+                tab: <Tab key="alarm" label="Alarm" icon="fa-bell-slash" />
             },
             {
-                content: <Heating key="alarm" navigator={this.props.navigator} />,
-                tab: <Tab key="alarm" label="alarm" icon="ion-ios-home-outline" />
+                content: <Heating key="heating" navigator={this.props.navigator} />,
+                tab: <Tab key="heating" label="Heating" icon="fa-fire" />
             },
+           
             {
                 content: <Lights key="lights" navigator={this.props.navigator} />,
-                tab: <Tab key="lights" label="lights" icon="ion-ios-albums-outline" />
+                tab: <Tab key="lights" label="Lights" icon="fa-lightbulb" />
             }
         ];
     }
