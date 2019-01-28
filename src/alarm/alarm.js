@@ -105,62 +105,6 @@ class Alarm extends BaseComponent {
         );
     }
 
-    renderPageOld() {
-        if (this.state.alarm.AlarmTriggeredEvents == null)
-            return;
-
-        return (
-            <div>
-                {this.state.alarm.AlarmArmed === true && this.state.alarm.AlarmTriggered === true && [
-                    <Ons.Button style={{ background: 'red' }} modifier="large">Alarm Triggered</Ons.Button>,
-                    this.getDisarmButton()
-                ]}
-                {this.state.alarm.AlarmArmed === true && this.state.alarm.AlarmTriggered === false && [
-                    <Ons.Button style={{ background: 'green' }} modifier="large">ARMED</Ons.Button>,
-                    this.getDisarmButton()
-                ]}
-                {this.state.alarm.AlarmArmed === false && this.state.alarm.AlarmTriggeredEvents.length === 0 && [
-                    <Ons.Button style={{ background: 'blue' }} modifier="large">Disarmed</Ons.Button>,
-                    this.getArmButton()
-                ]}
-                {this.state.alarm.AlarmArmed === false && this.state.alarm.AlarmTriggeredEvents.length !== 0 &&
-                    <Ons.Button style={{ background: 'gray' }} modifier="large">Disarmed - Cannot Arm</Ons.Button>
-                }
-
-                {this.state.alarm.AlarmTriggeredEvents.length !== 0 &&
-                    <Ons.List
-                        dataSource={this.state.alarm.AlarmTriggeredEvents}
-                        renderRow={this.renderAlarmTriggeredEvent.bind(this)}
-                        ListHeader={() => <Ons.ListHeader>Triggered Sensors</Ons.ListHeader>}
-                    />
-                }
-
-            </div>
-        );
-    }
-
-    getArmButton() {
-        return (
-            <Ons.SpeedDial position='right bottom'>
-                <Ons.Fab>
-                    <Ons.Icon icon='fa-plus' />
-                </Ons.Fab>
-                <Ons.SpeedDialItem onClick={this.actionAlarmArm.bind(this)} disabled={this.state.fabDisabled ? true : null}><Ons.Icon icon='fa-lock' /></Ons.SpeedDialItem>
-            </Ons.SpeedDial>
-        )
-    }
-
-    getDisarmButton() {
-        return (
-            <Ons.SpeedDial position='right bottom'>
-                <Ons.Fab>
-                    <Ons.Icon icon='fa-plus' />
-                </Ons.Fab>
-                <Ons.SpeedDialItem onClick={this.actionAlarmDisarm.bind(this)} disabled={this.state.fabDisabled ? true : null}><Ons.Icon icon='fa-unlock' /></Ons.SpeedDialItem>
-            </Ons.SpeedDial>
-        )
-    }
-
     renderAlarmTriggeredEvent(e) {
         return <Ons.ListItem key={e.DeviceISEID}>{e.DeviceName}.{e.DatapointName} was triggered&nbsp;<TimeAgo date={e.DatapointTimestamp + 'Z'} /></Ons.ListItem>
     }
@@ -179,10 +123,6 @@ class Alarm extends BaseComponent {
         App.Api_SetAlarmArmed().then(a => {
             this.handleNewState(a);
         });
-    }
-
-    actionNOP(event) {
-        //no operation
     }
 }
 
